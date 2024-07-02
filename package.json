@@ -1,0 +1,41 @@
+{
+  "name": "@kylee0325/gift",
+  "version": "0.1.0-alpha.0",
+  "description": "some common node scripts.",
+  "keywords": [
+    "node",
+    "script",
+    "scripts",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylee0325/gift.git"
+  },
+  "author": "kylee0325",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/kylee0325/gift/issues"
+  },
+  "homepage": "https://github.com/kylee0325/gift",
+  "type": "module",
+  "files": [
+    "bin"
+  ],
+  "bin": {
+    "gift": "./bin/index.mjs"
+  },
+  "scripts": {
+    "test": "node bin/index.mjs"
+  },
+  "engines": {
+    "node": ">= 16.0.0"
+  },
+  "dependencies": {
+    "zx": "^8.1.3"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  }
+}
