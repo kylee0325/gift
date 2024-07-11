@@ -9,7 +9,12 @@ import {
     getPath,
     getArgvValue,
 } from "./utils/index.mjs";
-import { printUsage, clean, getSizeInfo } from "./scripts/index.mjs";
+import {
+    printUsage,
+    clean,
+    getSizeInfo,
+    compressPngList,
+} from "./scripts/index.mjs";
 
 chalk.level = 1;
 
@@ -18,6 +23,7 @@ $.verbose = false;
 const COMMAND = {
     CLEAN: "clean",
     SIZE: "size",
+    PNG: "png",
 };
 
 await (async function main() {
@@ -73,6 +79,21 @@ await (async function main() {
         const sizeInfo = getSizeInfo(sizeDirPath);
 
         logger.success(JSON.stringify(sizeInfo, null, 4));
+        return;
+    }
+
+    if (argv._.includes(COMMAND.PNG)) {
+        let pngDir = getNextArg(COMMAND.PNG);
+
+        if (!pngDir) {
+            pngDir = await getArgvValue("目录/文件");
+        }
+
+        let quality = argv.q || argv.quality || 80;
+
+        const pngDirPath = getPath(pngDir);
+
+        compressPngList(pngDirPath, quality);
         return;
     }
 
